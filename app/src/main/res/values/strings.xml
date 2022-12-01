@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Chs Application</string>
+    <string name="play_ad">充预交金</string>
+    <string name="chs">医保卡结算</string>
+    <string name="self">自费结算</string>
+    <string name="welcome">欢迎使用床旁自助结算系统</string>
+    <string name="home_tip">感谢使用床旁结算系统，我可以帮您进行自费结算，医保卡结算和充值预交金，您可以选择使用语音或者使用界面下面的小麦克风图标静音</string>
+</resources>
+<!--
+//感谢使用床旁结算系统，我可以帮您进行自费结算，医保卡结算和充值预交金，您可以选择使用语音或者使用界面下面的小麦克风图标静音-->
