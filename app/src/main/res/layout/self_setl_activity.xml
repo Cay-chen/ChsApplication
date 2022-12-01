@@ -1,6 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/background"
+        tools:ignore="UselessParent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="186dp"
+            android:background="@mipmap/title_bg">
+
+            <ImageView
+                android:layout_width="488dp"
+                android:layout_height="61dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:src="@mipmap/logo" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="106dp"
+            android:background="@drawable/shape_corner_up">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/background"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="172dp"
+                    android:layout_height="53dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="41dp"
+                    android:lineSpacingExtra="42dp"
+                    android:text="@string/self"
+                    android:textColor="#D9000000"
+                    android:textSize="42sp" />
+                <LinearLayout
+                    android:layout_marginTop="56dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="720dp"
+                    android:orientation="vertical"
+                    android:layout_height="200dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/shape_edit">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="32dp"
+                            android:src="@mipmap/user"/>
+                        <EditText
+                            android:layout_marginStart="28.46dp"
+                            android:layout_width="591.54dp"
+                            android:text="01254874598756"
+                            android:background="@null"
+                            android:inputType="number"
+                            android:textSize="32sp"
+                            android:maxLines="7"
+                            android:textColor="@color/black"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="40dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="40dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/shape_edit">
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="32dp"
+                            android:src="@mipmap/icon_card"/>
+                        <EditText
+                            android:layout_marginStart="28.46dp"
+                            android:layout_width="591.54dp"
+                            android:background="@null"
+                            android:inputType="number"
+                            android:hint="@string/card_hint"
+                            android:maxLines="7"
+                            android:textSize="32sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="40dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="56dp"
+                    android:layout_width="720dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_width="224dp"
+                        android:layout_height="80dp"
+                        android:textSize="32sp"
+                                android:textColor="@color/white"
+                        android:text="@string/check_btn"
+                        android:background="@drawable/shape_check_btn"/>
+                    <Button
+                        android:layout_marginStart="24dp"
+                        android:layout_width="224dp"
+                        android:layout_height="80dp"
+                        android:textSize="32sp"
+                        android:textColor="@color/white"
+                        android:text="@string/selt_btn"
+                        android:background="@drawable/shape_setl_btn"/>
+                    <Button
+                        android:layout_marginStart="24dp"
+                        android:layout_width="224dp"
+                        android:layout_height="80dp"
+                        android:textSize="32sp"
+                        android:textColor="@color/white"
+                        android:text="@string/buda_btn"
+                        android:background="@drawable/shape_buda_btn"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            
+        </LinearLayout>
+
+
+    </RelativeLayout>
 </LinearLayout>
