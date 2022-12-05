@@ -1,27 +1,24 @@
 package com.example.myapplication;
 
-
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.reflect.Method;
 
-public class MainActivity extends Activity {
-    EditText writebankcard_mobileedit;
-    EditText writebankcard_mobileedit1;
-    CustomKeyboard mCustomKeyboard;
-    CustomKeyboard mCustomKeyboard1;
+public class SelfSetlActivity extends BaseActivity {
+    private EditText writebankcard_mobileedit;
+    private EditText writebankcard_mobileedit1;
+    private CustomKeyboard mCustomKeyboard;
+    private CustomKeyboard mCustomKeyboard1;
+    private Button backBtn;
 
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
     @Override
@@ -35,6 +32,7 @@ public class MainActivity extends Activity {
 
         writebankcard_mobileedit = (EditText) findViewById(R.id.identity);
         writebankcard_mobileedit1 = (EditText) findViewById(R.id.his_no);
+        backBtn = (Button) findViewById(R.id.back_btn);
         //1 屏蔽掉系统默认输入法
         if (Build.VERSION.SDK_INT <= 10) {
             writebankcard_mobileedit.setInputType(InputType.TYPE_NULL);
@@ -54,13 +52,13 @@ public class MainActivity extends Activity {
 
         //2 初试化键盘
         MyKeyboardView keyboardView = (MyKeyboardView) findViewById(R.id.customKeyboard);
-       // mCustomKeyboard.showKeyboard();
-       // mCustomKeyboard1.showKeyboard();
+        // mCustomKeyboard.showKeyboard();
+        // mCustomKeyboard1.showKeyboard();
 
         writebankcard_mobileedit.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                mCustomKeyboard = new CustomKeyboard(MainActivity.this, keyboardView, writebankcard_mobileedit);
+                mCustomKeyboard = new CustomKeyboard(SelfSetlActivity.this, keyboardView, writebankcard_mobileedit);
                 mCustomKeyboard.showKeyboard();
                 return false;
             }
@@ -68,20 +66,27 @@ public class MainActivity extends Activity {
         writebankcard_mobileedit1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                mCustomKeyboard1 = new CustomKeyboard(MainActivity.this, keyboardView, writebankcard_mobileedit1);
+                mCustomKeyboard1 = new CustomKeyboard(SelfSetlActivity.this, keyboardView, writebankcard_mobileedit1);
                 mCustomKeyboard1.showKeyboard();
                 return false;
             }
         });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
+
     //物理返回键
     @Override
     public void onBackPressed() {
-        if (mCustomKeyboard.isShowKeyboard()){
+        if (mCustomKeyboard.isShowKeyboard()) {
             mCustomKeyboard.hideKeyboard();
-        }else if (mCustomKeyboard1.isShowKeyboard()){
+        } else if (mCustomKeyboard1.isShowKeyboard()) {
             mCustomKeyboard1.hideKeyboard();
-        }else {
+        } else {
             finish();
         }
     }
