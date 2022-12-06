@@ -11,14 +11,21 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class SelfSetlActivity extends BaseActivity {
     private EditText writebankcard_mobileedit;
     private EditText writebankcard_mobileedit1;
     private CustomKeyboard mCustomKeyboard;
     private CustomKeyboard mCustomKeyboard1;
-    private Button backBtn;
+    private Button checkBtn;
 
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
     @Override
@@ -32,7 +39,8 @@ public class SelfSetlActivity extends BaseActivity {
 
         writebankcard_mobileedit = (EditText) findViewById(R.id.identity);
         writebankcard_mobileedit1 = (EditText) findViewById(R.id.his_no);
-        backBtn = (Button) findViewById(R.id.back_btn);
+        Button backBtn = (Button) findViewById(R.id.back_btn);
+        checkBtn = (Button) findViewById(R.id.self_check_btn);
         //1 屏蔽掉系统默认输入法
         if (Build.VERSION.SDK_INT <= 10) {
             writebankcard_mobileedit.setInputType(InputType.TYPE_NULL);
@@ -71,20 +79,68 @@ public class SelfSetlActivity extends BaseActivity {
                 return false;
             }
         });
+
+        /**
+         * 返回按键 返回上一级
+         */
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
+        checkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
+
+
+
+
     }
+/*
+    OkHttpClient client = new OkHttpClient();
+
+    String run(String url) throws IOException {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+        }
+    }
+*/
+
+
+    public static final MediaType JSON
+            = MediaType.get("application/json; charset=utf-8");
+
+    OkHttpClient client = new OkHttpClient();
+
+    String post(String url, String json) throws IOException {
+        RequestBody body = RequestBody.create(json, JSON);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+        }
+    }
+
 
     //物理返回键
     @Override
     public void onBackPressed() {
-        if (mCustomKeyboard.isShowKeyboard()) {
+        if (mCustomKeyboard!=null && mCustomKeyboard.isShowKeyboard() ) {
             mCustomKeyboard.hideKeyboard();
-        } else if (mCustomKeyboard1.isShowKeyboard()) {
+        } else if (mCustomKeyboard1!=null &&mCustomKeyboard1.isShowKeyboard()  ) {
             mCustomKeyboard1.hideKeyboard();
         } else {
             finish();

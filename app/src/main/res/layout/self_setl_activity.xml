@@ -127,6 +127,7 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/self_check_btn"
                         android:layout_width="224dp"
                         android:layout_height="80dp"
                         android:background="@drawable/shape_check_btn"

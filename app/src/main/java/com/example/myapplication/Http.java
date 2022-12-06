@@ -1,3 +1,4 @@
+/*
 package com.example.myapplication;
 
 import org.apache.http.HttpEntity;
@@ -18,9 +19,11 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 public class Http {
-    /**
+    */
+/**
      * 调用普通交易及文件下载交易
-     */
+     *//*
+
 
     public static String Api(String input,String url) {
         String result = null;
@@ -80,3 +83,4 @@ public class Http {
         return result;
     }
 }
+*/
