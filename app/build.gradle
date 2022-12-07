@@ -57,5 +57,5 @@ dependencies {
     implementation 'com.github.li-xiaojun:XPopup:2.9.16'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
-
+    implementation 'com.zhy:okhttputils:2.6.2'
 }

@@ -3,13 +3,18 @@ package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.InputType;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.myapplication.utlis.Http;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -93,7 +98,26 @@ public class SelfSetlActivity extends BaseActivity {
         checkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        Http http = new Http();
+                        try {
+                            String back =http.get("http://192.168.121.189:8088/login");
+                            Log.d("TAG", "onClick: "+back);
+                            Message message = Message.obtain();
+                            message.what = 11;
+                            Bundle bundle = new Bundle();
+                            bundle.putString("response", back);
+                            message.setData(bundle);
+                            handler.sendMessage(message);
 
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
 
             }
         });
@@ -116,7 +140,16 @@ public class SelfSetlActivity extends BaseActivity {
         }
     }
 */
-
+private Handler handler = new Handler() {
+    @Override
+    public void handleMessage(Message msg) {
+        super.handleMessage(msg);
+        if (msg.what == 11) {
+            Log.d("TAG", "handleMessage: "+ msg.getData().getString("response"));
+           // mTv.setText("onResponse:" + msg.getData().getString("response"));
+        }
+    }
+};
 
     public static final MediaType JSON
             = MediaType.get("application/json; charset=utf-8");
